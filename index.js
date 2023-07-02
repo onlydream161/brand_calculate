@@ -12,7 +12,7 @@ const dataTypeFunction = function (event) {
   event.preventDefault();
   let data = Object.fromEntries(new FormData(form_type));
   console.log(data);
-  let title = `Вы считаете:${data.type} `;
+  let title = `Вы считаете:  ${data.type} `;
   console.log(title);
   nowTitle.textContent = title;
   dataType = { ...data };
