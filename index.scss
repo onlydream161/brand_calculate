@@ -34,8 +34,26 @@ body {
 .form_type{
     display: flex;
     gap: 10px;
-    
     justify-content: center;
+    align-items: center;
+    .button_type {
+        color: #090909;
+        padding: 0.2em 1.7em;
+        font-size: 18px;
+        border-radius: 0.5em;
+        background: #e8e8e8;
+        border: 1px solid #e8e8e8;
+        transition: all .1s;
+      }
+      
+      .button_type:hover {
+        border: 1px solid white;
+      }
+      
+      .button_type:active {
+        box-shadow: 4px 4px 12px #c5c5c5,
+                   -4px -4px 12px #ffffff;
+      }
 }
 .form__firstblock {
   margin-bottom: 50px;
