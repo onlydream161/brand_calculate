@@ -33,6 +33,12 @@ body {
   font-family: "Sofia Sans Condensed", sans-serif;
   margin-right: 50px;
 }
+.form1 .retro {
+  margin: 10px 10px 5px;
+}
+.form1 .retro input {
+  margin-right: 5px;
+}
 
 .form__group {
   position: relative;

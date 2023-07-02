@@ -33,8 +33,12 @@
                 <input type="input" name="logistika" class="form__field" placeholder="логистика" autocomplete="off" required="">
                 <label for="name" class="form__label">логистика</label>
             </div>
-
-        
+            
+                <label class="retro" for=""><input type="checkbox" name="retro" value="0.05" checked>ретро 5%</label>
+                <label class="retro" for=""><input type="checkbox" name="retro" value="0.1">ретро 10%</label>
+            
+            
+            
           <button class="btn" name="" type="submit">отправить</button>
         </form>
       </div>
@@ -143,6 +147,12 @@
               <tr>
                 <th colspan="2">Цены</th>
               </tr>
+              <tr>
+                <td>товар</td>
+                <td>цена без НДС</td>
+                <td>с НДС </td>
+                <td> С ретро</td>
+            </tr>
             </thead>
             <tbody class="table__body"></tbody>
           </table>

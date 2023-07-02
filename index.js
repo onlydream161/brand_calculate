@@ -64,9 +64,14 @@ const answers = function sum(obj, obj2) {
       );
 
       console.log(`${category} : ${lastSum.toFixed(2)} `);
+      let retro = Number(obj2.retro * lastSum.toFixed(2));
+      let sNds = lastSum.toFixed(2) * 1.1;
+      let sRetro = sNds + retro;
       let tr = document.createElement("tr");
 
-      tr.innerHTML = `<td>${category}</td> <td>${lastSum.toFixed(2)}</td>`;
+      tr.innerHTML = `<td>${category}</td> <td>${lastSum.toFixed(
+        2
+      )}</td><td>${sNds.toFixed(2)}</td> <td>${sRetro.toFixed(2)}</td>`;
       tableBody.append(tr);
     }
   }

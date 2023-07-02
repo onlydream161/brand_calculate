@@ -27,7 +27,12 @@ body {
   flex-direction: column;
   font-family: "Sofia Sans Condensed", sans-serif;
   margin-right: 50px;
-  
+  .retro{
+    margin: 10px 10px 5px;
+    input{
+        margin-right: 5px;
+    }
+  }
 }
 
 .form__group {
