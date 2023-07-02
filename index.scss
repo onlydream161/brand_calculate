@@ -2,7 +2,7 @@ body {
   background: linear-gradient(to right, #bbd2c5, #536976);
 }
 .wrapper {
-  padding-top: 50px;
+  padding-top: 15px;
   font-family: "Sofia Sans Condensed", sans-serif;
   min-height: 100vh;
   padding-left: 40px;
@@ -16,7 +16,26 @@ body {
   width: 300px;
   margin: 0 auto;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+.subtitle{
+    width: 300px;
+  margin: 15px auto;
+  text-align: center;
+
+}
+.nowType{
+    width: 300px;
+  margin: 15px auto;
+  text-align: center;
+  color: #fffa15;
+  text-decoration: underline;
+}
+.form_type{
+    display: flex;
+    gap: 10px;
+    
+    justify-content: center;
 }
 .form__firstblock {
   margin-bottom: 50px;
