@@ -31,6 +31,7 @@ const data2Function = function (event) {
 form_type.addEventListener("submit", (event) => {
   dataTypeFunction(event);
   deletePrice();
+  deleteValye();
   console.log(dataType);
 });
 
@@ -40,6 +41,7 @@ form1.addEventListener("submit", (event) => {
 });
 form2.addEventListener("submit", (event) => {
   deletePrice();
+
   data2Function(event);
   if (dataType.type == "brand") {
     answers(data2, data1, correctLogistic, sumFormula);
@@ -56,44 +58,52 @@ form2.addEventListener("submit", (event) => {
 });
 
 // переводим brand логистику в число
-const correctLogistic = function (otsrochka, price) {
+const correctLogistic = function (otsrochka, price, logist) {
   let numberotsrochka = Number(otsrochka);
   let numberPrice = Number(price);
-  let peremNumber = numberPrice + 0 + 5 + 2.95;
+  let logistika = Number(logist);
+  let peremNumber = numberPrice + 0 + logistika + 2.95;
   let sum = ((peremNumber * 0.12) / 365) * numberotsrochka;
+
   return sum;
 };
 
 //общая формула Brand
-const sumFormula = function (logist, price, fasovka, marga) {
+const sumFormula = function (logist, price, fasovka, marga, logisticData) {
   let priceNum = Number(price);
   let fasovkaNum = Number(fasovka);
   let margaNum = Number(marga);
+  let logistData = Number(logisticData);
   let kosvennie = 1.61;
-  let dostavka = 4.17;
+  let dostavka = (logistData + 0) / 1.2;
+
   let praymieZatrats = 3.37;
   let sum =
     (logist + dostavka + priceNum / 1.1) * fasovkaNum +
     margaNum +
     kosvennie +
     praymieZatrats;
+
   return sum;
 };
 // переводим noname логистику в число
-const correctLogisticNoname = function (otsrochka, price) {
+const correctLogisticNoname = function (otsrochka, price, dataLogist) {
   let numberotsrochka = Number(otsrochka);
   let numberPrice = Number(price);
-  let peremNumber = numberPrice + 0 + 1 + 2.95;
+  let logistData = Number(dataLogist);
+  let peremNumber = numberPrice + 0 + logistData + 2.95;
   let sum = ((peremNumber * 0.12) / 365) * numberotsrochka;
   return sum;
 };
 //форумла Noname
-const sumNoName = function (logist, price, fasovka, marga) {
+const sumNoName = function (logist, price, fasovka, marga, logisticData) {
   let priceNum = Number(price);
   let fasovkaNum = Number(fasovka);
   let margaNum = Number(marga);
+  let logistData = Number(logisticData);
   let kosvennie = 1.43;
-  let dostavka = 0.85;
+  // тут ошибка!!!!! доставка считатся другая
+  let dostavka = (logistData + 0) / 1.18;
   let praymieZatrats = 1.66;
   let sum =
     (logist + dostavka + priceNum / 1.1) * fasovkaNum +
@@ -106,13 +116,18 @@ const sumNoName = function (logist, price, fasovka, marga) {
 const answers = function sum(obj, obj2, functionLogistic, mainformula) {
   for (category in obj) {
     if (obj[category]) {
-      let correctlog = functionLogistic(obj2.otsrochka, obj[category]);
-
+      let correctlog = functionLogistic(
+        obj2.otsrochka,
+        obj[category],
+        obj2.logistika
+      );
+      console.log(correctlog);
       let lastSum = mainformula(
         correctlog,
         obj[category],
         obj2.fasovka,
-        obj2.marga
+        obj2.marga,
+        obj2.logistika
       );
 
       console.log(`${category} : ${lastSum.toFixed(2)} `);
@@ -189,7 +204,7 @@ const answersMishkino = function (obj1, obj2, mainformula, nds) {
 
       let noNds = lastSum / nds;
       let withpromo = lastSum + noNds * Number(obj2.retro);
-      console.log(lastSum, noNds, withpromo);
+
       let tr = document.createElement("tr");
 
       tr.innerHTML = `<td>${category}</td> <td>${noNds.toFixed(
@@ -202,4 +217,12 @@ const answersMishkino = function (obj1, obj2, mainformula, nds) {
 // очистка цен
 const deletePrice = function () {
   tableBody.innerHTML = "";
+};
+
+// очистка инпутов
+const inputs = document.querySelectorAll("input[type=text]");
+const deleteValye = () => {
+  inputs.forEach((input) => {
+    input.value = "";
+  });
 };

@@ -241,3 +241,18 @@ body {
 .btn:active {
   opacity: 0.5;
 }
+
+.button-fix {
+  position: fixed;
+  right: 50px;
+  bottom: 40px;
+}
+.button-fix h3 {
+  margin: 0;
+}
+
+@media (max-width: 830px) {
+  .button-fix {
+    position: static;
+  }
+}
