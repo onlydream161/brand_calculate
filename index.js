@@ -77,7 +77,7 @@ const sumFormula = function (logist, price, fasovka, marga, logisticData) {
   let kosvennie = 1.61;
   let dostavka = (logistData + 0) / 1.2;
 
-  let praymieZatrats = 3.37;
+  let praymieZatrats = 3.2;
   let sum =
     (logist + dostavka + priceNum / 1.1) * fasovkaNum +
     margaNum +
